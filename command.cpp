@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 	int ret = system(argv[1]);
 	if(ret) {
 		checkQuiet(cout << "\e[1;31mExited with code " << ret << "\e[0m" << endl)
-		return ret;
+		return 1;
 	}
 	checkQuiet(cout << "\e[1;32mCompleted successfully\e[0m" << endl)
 	return 0;
