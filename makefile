@@ -13,4 +13,4 @@ check:
 	./bin/header header test
 	./bin/detail 'Test detail'
 	./bin/command 'echo hello'
-	./bin/command nonexistent-command
+	./bin/command nonexistent-command | true
