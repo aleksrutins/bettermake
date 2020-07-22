@@ -10,7 +10,7 @@ bin/header: header.cpp
 	$(CC) header.cpp -o bin/header
 
 check:
-	./bettermake/bin/header header test
-	./bettermake/bin/detail 'Test detail'
-	./bettermake/bin/command 'echo hello'
-	./bettermake/bin/command nonexistent-command
+	./bin/header header test
+	./bin/detail 'Test detail'
+	./bin/command 'echo hello'
+	./bin/command nonexistent-command
