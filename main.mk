@@ -1,6 +1,6 @@
 bettermake/compile:
 	@echo "Compiling BetterMake..."
-	@$(MAKE) -C bettermake
+	@cd bettermake && ./configure && $(MAKE)
 bettermake/test: bettermake/compile
 	@echo "Testing BetterMake..."
-	@$(MAKE) -C bettermake check
+	@$(MAKE) -C bettermake test
