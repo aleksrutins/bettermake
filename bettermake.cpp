@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 		cout << "\e[1;33mInstalling Bettermake...\e[0m" << endl;
 		cout << "\e[3;32mDownloading...\e[0m" << endl;
 		command("mkdir -p /opt/bettermake");
-		command("wget -o /opt/bettermake/tools.tar.gz https://raw.githubusercontent.com/munchkinhalfling/bettermake/master/dist/tools.tar.gz");
+		command("wget -O /opt/bettermake/tools.tar.gz https://raw.githubusercontent.com/munchkinhalfling/bettermake/master/dist/tools.tar.gz");
 		cout << "\e[3;32mUnzipping...\e[0m" << endl;
 		command("tar -C /opt/bettermake -xzf /opt/bettermake/tools.tar.gz");
 		cout << "\e[1;32mDone!\e[0;32m Run this command again to update.\e[0m" << endl;
