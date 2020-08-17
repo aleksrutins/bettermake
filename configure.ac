@@ -2,7 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_INIT([bettermake], [1.0], [munchkinhalfling@pm.me])
+AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([header.cpp])
 AC_CONFIG_HEADERS([config.h])
 

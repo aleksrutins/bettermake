@@ -1,1 +1,1 @@
-export PATH := ./bettermake/bin:$(PATH)
+export PATH := /opt/bettermake:$(PATH)
