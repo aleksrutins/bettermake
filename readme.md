@@ -1,7 +1,11 @@
 # Bettermake
 ## Make your makefiles better
 ### Get started
-Download <dist/bettermake.gz> and unzip it in your project directory. Then, run './bettermake install' to install bettermake. \
+#### On MacOS/Unix (Use the way below if on Linux)
+`git clone` the repository and run `./configure && make && sudo make install`. Then, download <dist/bettermake.gz> and unzip it to your project directory for Linux users. You will have to build it from source every time you want to update. \
+Then, include `/opt/bettermake/path.mk` in your Makefile.
+#### On Linux
+Download <dist/bettermake.gz> and unzip it in your project directory. Then, run './bettermake install' as the superuser to install bettermake. \
 Then, add to the top of your makefile:
 ```Makefile
 include /opt/bettermake/path.mk
