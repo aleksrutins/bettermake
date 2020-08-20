@@ -1,19 +1,20 @@
 # Bettermake
 ## Make your makefiles better
 ### Get started
-#### On MacOS/Unix (Use the way below if on Linux)
-`git clone` the repository and run `./configure && make && sudo make install`. Then, download <dist/bettermake.gz> and unzip it to your project directory for Linux users. You will have to build it from source every time you want to update. \
-Then, include `/opt/bettermake/path.mk` in your Makefile.
-#### On Linux
-Download <dist/bettermake.gz> and unzip it in your project directory. Then, run './bettermake install' as the superuser to install bettermake. \
-Then, add to the top of your makefile:
-```Makefile
-include /opt/bettermake/path.mk
+#### Installation
+`git clone` the repository and run `./configure && make && sudo make install`, or, on Linux, you can run 'sudo ./bettermake build install' to take a look at the built-in build system.
+
+#### Create a build file
+##### Using make
+Just use make as usual, with `include /opt/bettermake/path.mk` at the top, and using the commands described below.
+##### Using the built-in build system.
+Run `bettermake init` to create an example `buildconf.yml` file for you. \
+See the `buildconf.yml` file in this repository for a fully-documented example.
 ```
 ### Building
 Simply run `make` as usual.
 
-### Command reference
+### Command reference (for Makefiles)
 #### `mk-header`
 Print out a recipe header. \
 Usage: `@mk-header <recipe name> "<recipe description>"` \

@@ -103,16 +103,19 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_bettermake_OBJECTS = bettermake.$(OBJEXT)
+am__dirstamp = $(am__leading_dot)dirstamp
+am_bettermake_OBJECTS = src/bettermake.$(OBJEXT) \
+	src/gen-build.$(OBJEXT) src/targets.$(OBJEXT) \
+	src/command-fn.$(OBJEXT)
 bettermake_OBJECTS = $(am_bettermake_OBJECTS)
 bettermake_LDADD = $(LDADD)
-am_mk_command_OBJECTS = command.$(OBJEXT)
+am_mk_command_OBJECTS = src/command.$(OBJEXT)
 mk_command_OBJECTS = $(am_mk_command_OBJECTS)
 mk_command_LDADD = $(LDADD)
-am_mk_detail_OBJECTS = detail.$(OBJEXT)
+am_mk_detail_OBJECTS = src/detail.$(OBJEXT)
 mk_detail_OBJECTS = $(am_mk_detail_OBJECTS)
 mk_detail_LDADD = $(LDADD)
-am_mk_header_OBJECTS = header.$(OBJEXT)
+am_mk_header_OBJECTS = src/header.$(OBJEXT)
 mk_header_OBJECTS = $(am_mk_header_OBJECTS)
 mk_header_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
@@ -130,9 +133,23 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/bettermake.Po ./$(DEPDIR)/command.Po \
-	./$(DEPDIR)/detail.Po ./$(DEPDIR)/header.Po
+am__depfiles_remade = src/$(DEPDIR)/bettermake.Po \
+	src/$(DEPDIR)/command-fn.Po src/$(DEPDIR)/command.Po \
+	src/$(DEPDIR)/detail.Po src/$(DEPDIR)/gen-build.Po \
+	src/$(DEPDIR)/header.Po src/$(DEPDIR)/targets.Po
 am__mv = mv -f
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+AM_V_CC = $(am__v_CC_$(V))
+am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))
+am__v_CC_0 = @echo "  CC      " $@;
+am__v_CC_1 = 
+CCLD = $(CC)
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+AM_V_CCLD = $(am__v_CCLD_$(V))
+am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
+am__v_CCLD_0 = @echo "  CCLD    " $@;
+am__v_CCLD_1 = 
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 AM_V_CXX = $(am__v_CXX_$(V))
@@ -178,8 +195,8 @@ CTAGS = ctags
 CSCOPE = cscope
 AM_RECURSIVE_TARGETS = cscope
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in AUTHORS \
-	COPYING ChangeLog INSTALL NEWS README depcomp install-sh \
-	missing
+	COPYING ChangeLog INSTALL NEWS README compile depcomp \
+	install-sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -204,6 +221,9 @@ AUTOCONF = ${SHELL} /home/aleks/Projects/bettermake/missing autoconf
 AUTOHEADER = ${SHELL} /home/aleks/Projects/bettermake/missing autoheader
 AUTOMAKE = ${SHELL} /home/aleks/Projects/bettermake/missing automake-1.16
 AWK = gawk
+CC = gcc
+CCDEPMODE = depmode=gcc3
+CFLAGS = -g -O2
 CPPFLAGS = 
 CXX = g++
 CXXDEPMODE = depmode=gcc3
@@ -220,9 +240,9 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LDFLAGS = 
+LDFLAGS =  -L/usr/local/lib
 LIBOBJS = 
-LIBS = 
+LIBS = -lcyaml 
 LTLIBOBJS = 
 MAKEINFO = ${SHELL} /home/aleks/Projects/bettermake/missing makeinfo
 MKDIR_P = /bin/mkdir -p
@@ -243,6 +263,7 @@ abs_builddir = /home/aleks/Projects/bettermake
 abs_srcdir = /home/aleks/Projects/bettermake
 abs_top_builddir = /home/aleks/Projects/bettermake
 abs_top_srcdir = /home/aleks/Projects/bettermake
+ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
@@ -281,31 +302,32 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-mk_command_SOURCES = command.cpp
-mk_header_SOURCES = header.cpp
-mk_detail_SOURCES = detail.cpp
-bettermake_SOURCES = bettermake.cpp
+AUTOMAKE_OPTIONS = foreign subdir-objects
+mk_command_SOURCES = src/command.cpp
+mk_header_SOURCES = src/header.cpp
+mk_detail_SOURCES = src/detail.cpp
+bettermake_SOURCES = src/bettermake.cpp src/gen-build.c src/targets.c src/command-fn.c
 OPTDIR = /opt/bettermake
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
-.SUFFIXES: .cpp .o .obj
+.SUFFIXES: .c .cpp .o .obj
 am--refresh: Makefile
 	@:
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
-	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu'; \
-	      $(am__cd) $(srcdir) && $(AUTOMAKE) --gnu \
+	      echo ' cd $(srcdir) && $(AUTOMAKE) --foreign'; \
+	      $(am__cd) $(srcdir) && $(AUTOMAKE) --foreign \
 		&& exit 0; \
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu Makefile
+	  $(AUTOMAKE) --foreign Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -353,18 +375,38 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+src/$(am__dirstamp):
+	@$(MKDIR_P) src
+	@: > src/$(am__dirstamp)
+src/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/$(DEPDIR)
+	@: > src/$(DEPDIR)/$(am__dirstamp)
+src/bettermake.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/gen-build.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/targets.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/command-fn.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 
 bettermake$(EXEEXT): $(bettermake_OBJECTS) $(bettermake_DEPENDENCIES) $(EXTRA_bettermake_DEPENDENCIES) 
 	@rm -f bettermake$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(bettermake_OBJECTS) $(bettermake_LDADD) $(LIBS)
+src/command.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 
 mk-command$(EXEEXT): $(mk_command_OBJECTS) $(mk_command_DEPENDENCIES) $(EXTRA_mk_command_DEPENDENCIES) 
 	@rm -f mk-command$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(mk_command_OBJECTS) $(mk_command_LDADD) $(LIBS)
+src/detail.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 
 mk-detail$(EXEEXT): $(mk_detail_OBJECTS) $(mk_detail_DEPENDENCIES) $(EXTRA_mk_detail_DEPENDENCIES) 
 	@rm -f mk-detail$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(mk_detail_OBJECTS) $(mk_detail_LDADD) $(LIBS)
+src/header.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 
 mk-header$(EXEEXT): $(mk_header_OBJECTS) $(mk_header_DEPENDENCIES) $(EXTRA_mk_header_DEPENDENCIES) 
 	@rm -f mk-header$(EXEEXT)
@@ -372,14 +414,18 @@ mk-header$(EXEEXT): $(mk_header_OBJECTS) $(mk_header_DEPENDENCIES) $(EXTRA_mk_he
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f src/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/bettermake.Po # am--include-marker
-include ./$(DEPDIR)/command.Po # am--include-marker
-include ./$(DEPDIR)/detail.Po # am--include-marker
-include ./$(DEPDIR)/header.Po # am--include-marker
+include src/$(DEPDIR)/bettermake.Po # am--include-marker
+include src/$(DEPDIR)/command-fn.Po # am--include-marker
+include src/$(DEPDIR)/command.Po # am--include-marker
+include src/$(DEPDIR)/detail.Po # am--include-marker
+include src/$(DEPDIR)/gen-build.Po # am--include-marker
+include src/$(DEPDIR)/header.Po # am--include-marker
+include src/$(DEPDIR)/targets.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -387,16 +433,34 @@ $(am__depfiles_remade):
 
 am--depfiles: $(am__depfiles_remade)
 
+.c.o:
+	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CC)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(COMPILE) -c -o $@ $<
+
+.c.obj:
+	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CC)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
 .cpp.o:
-	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
 #	$(AM_V_CXX)source='$<' object='$@' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ $<
 
 .cpp.obj:
-	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
 #	$(AM_V_CXX)source='$<' object='$@' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
@@ -665,6 +729,8 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f src/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -675,10 +741,13 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-		-rm -f ./$(DEPDIR)/bettermake.Po
-	-rm -f ./$(DEPDIR)/command.Po
-	-rm -f ./$(DEPDIR)/detail.Po
-	-rm -f ./$(DEPDIR)/header.Po
+		-rm -f src/$(DEPDIR)/bettermake.Po
+	-rm -f src/$(DEPDIR)/command-fn.Po
+	-rm -f src/$(DEPDIR)/command.Po
+	-rm -f src/$(DEPDIR)/detail.Po
+	-rm -f src/$(DEPDIR)/gen-build.Po
+	-rm -f src/$(DEPDIR)/header.Po
+	-rm -f src/$(DEPDIR)/targets.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -726,10 +795,13 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-		-rm -f ./$(DEPDIR)/bettermake.Po
-	-rm -f ./$(DEPDIR)/command.Po
-	-rm -f ./$(DEPDIR)/detail.Po
-	-rm -f ./$(DEPDIR)/header.Po
+		-rm -f src/$(DEPDIR)/bettermake.Po
+	-rm -f src/$(DEPDIR)/command-fn.Po
+	-rm -f src/$(DEPDIR)/command.Po
+	-rm -f src/$(DEPDIR)/detail.Po
+	-rm -f src/$(DEPDIR)/gen-build.Po
+	-rm -f src/$(DEPDIR)/header.Po
+	-rm -f src/$(DEPDIR)/targets.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

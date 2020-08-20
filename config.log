@@ -50,31 +50,31 @@ PATH: /snap/bin
 ## Core tests. ##
 ## ----------- ##
 
-configure:1829: checking for a BSD-compatible install
-configure:1897: result: /usr/bin/install -c
-configure:1908: checking whether build environment is sane
-configure:1963: result: yes
-configure:2112: checking for a thread-safe mkdir -p
-configure:2151: result: /bin/mkdir -p
-configure:2158: checking for gawk
-configure:2174: found /usr/bin/gawk
-configure:2185: result: gawk
-configure:2196: checking whether make sets $(MAKE)
-configure:2218: result: yes
-configure:2247: checking whether make supports nested variables
-configure:2264: result: yes
-configure:2453: checking for g++
-configure:2469: found /usr/bin/g++
-configure:2480: result: g++
-configure:2507: checking for C++ compiler version
-configure:2516: g++ --version >&5
+configure:1923: checking for a BSD-compatible install
+configure:1991: result: /usr/bin/install -c
+configure:2002: checking whether build environment is sane
+configure:2057: result: yes
+configure:2206: checking for a thread-safe mkdir -p
+configure:2245: result: /bin/mkdir -p
+configure:2252: checking for gawk
+configure:2268: found /usr/bin/gawk
+configure:2279: result: gawk
+configure:2290: checking whether make sets $(MAKE)
+configure:2312: result: yes
+configure:2341: checking whether make supports nested variables
+configure:2358: result: yes
+configure:2547: checking for g++
+configure:2563: found /usr/bin/g++
+configure:2574: result: g++
+configure:2601: checking for C++ compiler version
+configure:2610: g++ --version >&5
 g++ (Solus) 9.3.0
 Copyright (C) 2019 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:2527: $? = 0
-configure:2516: g++ -v >&5
+configure:2621: $? = 0
+configure:2610: g++ -v >&5
 Using built-in specs.
 COLLECT_GCC=g++
 COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-solus-linux/9/lto-wrapper
@@ -82,55 +82,109 @@ Target: x86_64-solus-linux
 Configured with: ../configure --prefix=/usr --with-pkgversion=Solus --libdir=/usr/lib64 --libexecdir=/usr/lib64 --with-system-zlib --enable-cet --enable-default-ssp --enable-shared --enable-threads=posix --enable-gnu-indirect-function --enable-__cxa_atexit --enable-plugin --enable-gold --enable-ld=default --enable-clocale=gnu --enable-multilib --with-multilib-list=m32,m64 --enable-lto --with-gcc-major-version-only --with-bugurl=https://dev.getsol.us/ --with-arch_32=i686 --enable-linker-build-id --with-linker-hash-style=gnu --with-gnu-ld --build=x86_64-solus-linux --target=x86_64-solus-linux --enable-languages=c,c++,fortran
 Thread model: posix
 gcc version 9.3.0 (Solus) 
-configure:2527: $? = 0
-configure:2516: g++ -V >&5
+configure:2621: $? = 0
+configure:2610: g++ -V >&5
 g++: error: unrecognized command line option '-V'
 g++: fatal error: no input files
 compilation terminated.
-configure:2527: $? = 1
-configure:2516: g++ -qversion >&5
+configure:2621: $? = 1
+configure:2610: g++ -qversion >&5
 g++: error: unrecognized command line option '-qversion'; did you mean '--version'?
 g++: fatal error: no input files
 compilation terminated.
-configure:2527: $? = 1
-configure:2547: checking whether the C++ compiler works
-configure:2569: g++    conftest.cpp  >&5
-configure:2573: $? = 0
-configure:2621: result: yes
-configure:2624: checking for C++ compiler default output file name
-configure:2626: result: a.out
-configure:2632: checking for suffix of executables
-configure:2639: g++ -o conftest    conftest.cpp  >&5
-configure:2643: $? = 0
-configure:2665: result: 
-configure:2687: checking whether we are cross compiling
-configure:2695: g++ -o conftest    conftest.cpp  >&5
-configure:2699: $? = 0
-configure:2706: ./conftest
-configure:2710: $? = 0
-configure:2698: result: no
-configure:2703: checking for suffix of object files
-configure:2725: g++ -c   conftest.cpp >&5
-configure:2729: $? = 0
-configure:2750: result: o
-configure:2754: checking whether we are using the GNU C++ compiler
-configure:2773: g++ -c   conftest.cpp >&5
-configure:2773: $? = 0
-configure:2782: result: yes
-configure:2791: checking whether g++ accepts -g
-configure:2811: g++ -c -g  conftest.cpp >&5
-configure:2811: $? = 0
-configure:2852: result: yes
-configure:2878: checking whether make supports the include directive
-configure:2893: make -f confmf.GNU && cat confinc.out
+configure:2621: $? = 1
+configure:2641: checking whether the C++ compiler works
+configure:2663: g++    conftest.cpp  >&5
+configure:2667: $? = 0
+configure:2715: result: yes
+configure:2718: checking for C++ compiler default output file name
+configure:2720: result: a.out
+configure:2726: checking for suffix of executables
+configure:2733: g++ -o conftest    conftest.cpp  >&5
+configure:2737: $? = 0
+configure:2759: result: 
+configure:2781: checking whether we are cross compiling
+configure:2789: g++ -o conftest    conftest.cpp  >&5
+configure:2793: $? = 0
+configure:2800: ./conftest
+configure:2804: $? = 0
+configure:2792: result: no
+configure:2797: checking for suffix of object files
+configure:2819: g++ -c   conftest.cpp >&5
+configure:2823: $? = 0
+configure:2844: result: o
+configure:2848: checking whether we are using the GNU C++ compiler
+configure:2867: g++ -c   conftest.cpp >&5
+configure:2867: $? = 0
+configure:2876: result: yes
+configure:2885: checking whether g++ accepts -g
+configure:2905: g++ -c -g  conftest.cpp >&5
+configure:2905: $? = 0
+configure:2946: result: yes
+configure:2972: checking whether make supports the include directive
+configure:2987: make -f confmf.GNU && cat confinc.out
 this is the am__doit target
-configure:2896: $? = 0
-configure:2915: result: yes (GNU style)
-configure:2940: checking dependency style of g++
-configure:3051: result: gcc3
-configure:3178: checking that generated files are newer than configure
-configure:3184: result: done
-configure:3207: creating ./config.status
+configure:2990: $? = 0
+configure:3009: result: yes (GNU style)
+configure:3034: checking dependency style of g++
+configure:3145: result: gcc3
+configure:3212: checking for gcc
+configure:3228: found /usr/bin/gcc
+configure:3239: result: gcc
+configure:3468: checking for C compiler version
+configure:3477: gcc --version >&5
+gcc (Solus) 9.3.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+configure:3488: $? = 0
+configure:3477: gcc -v >&5
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-solus-linux/9/lto-wrapper
+Target: x86_64-solus-linux
+Configured with: ../configure --prefix=/usr --with-pkgversion=Solus --libdir=/usr/lib64 --libexecdir=/usr/lib64 --with-system-zlib --enable-cet --enable-default-ssp --enable-shared --enable-threads=posix --enable-gnu-indirect-function --enable-__cxa_atexit --enable-plugin --enable-gold --enable-ld=default --enable-clocale=gnu --enable-multilib --with-multilib-list=m32,m64 --enable-lto --with-gcc-major-version-only --with-bugurl=https://dev.getsol.us/ --with-arch_32=i686 --enable-linker-build-id --with-linker-hash-style=gnu --with-gnu-ld --build=x86_64-solus-linux --target=x86_64-solus-linux --enable-languages=c,c++,fortran
+Thread model: posix
+gcc version 9.3.0 (Solus) 
+configure:3488: $? = 0
+configure:3477: gcc -V >&5
+gcc: error: unrecognized command line option '-V'
+gcc: fatal error: no input files
+compilation terminated.
+configure:3488: $? = 1
+configure:3477: gcc -qversion >&5
+gcc: error: unrecognized command line option '-qversion'; did you mean '--version'?
+gcc: fatal error: no input files
+compilation terminated.
+configure:3488: $? = 1
+configure:3492: checking whether we are using the GNU C compiler
+configure:3511: gcc -c   conftest.c >&5
+configure:3511: $? = 0
+configure:3520: result: yes
+configure:3529: checking whether gcc accepts -g
+configure:3549: gcc -c -g  conftest.c >&5
+configure:3549: $? = 0
+configure:3590: result: yes
+configure:3607: checking for gcc option to accept ISO C89
+configure:3670: gcc  -c -g -O2  conftest.c >&5
+configure:3670: $? = 0
+configure:3683: result: none needed
+configure:3708: checking whether gcc understands -c and -o together
+configure:3730: gcc -c conftest.c -o conftest2.o
+configure:3733: $? = 0
+configure:3730: gcc -c conftest.c -o conftest2.o
+configure:3733: $? = 0
+configure:3745: result: yes
+configure:3764: checking dependency style of gcc
+configure:3875: result: gcc3
+configure:3891: checking for cyaml_load_file in -lcyaml
+configure:3916: gcc -o conftest -g -O2   -L/usr/local/lib conftest.c -lcyaml   >&5
+configure:3916: $? = 0
+configure:3925: result: yes
+configure:4046: checking that generated files are newer than configure
+configure:4052: result: done
+configure:4079: creating ./config.status
 
 ## ---------------------- ##
 ## Running config.status. ##
@@ -147,21 +201,26 @@ generated by GNU Autoconf 2.69.  Invocation command line was
 
 on aleks-solus
 
-config.status:835: creating Makefile
-config.status:835: creating config.h
-config.status:1016: config.h is unchanged
-config.status:1064: executing depfiles commands
-config.status:1141: cd .       && sed -e '/# am--include-marker/d' Makefile         | make -f - am--depfiles
+config.status:842: creating Makefile
+config.status:842: creating config.h
+config.status:1023: config.h is unchanged
+config.status:1071: executing depfiles commands
+config.status:1148: cd .       && sed -e '/# am--include-marker/d' Makefile         | make -f - am--depfiles
 make: Nothing to be done for 'am--depfiles'.
-config.status:1146: $? = 0
+config.status:1153: $? = 0
 
 ## ---------------- ##
 ## Cache variables. ##
 ## ---------------- ##
 
+ac_cv_c_compiler_gnu=yes
 ac_cv_cxx_compiler_gnu=yes
 ac_cv_env_CCC_set=
 ac_cv_env_CCC_value=
+ac_cv_env_CC_set=
+ac_cv_env_CC_value=
+ac_cv_env_CFLAGS_set=
+ac_cv_env_CFLAGS_value=
 ac_cv_env_CPPFLAGS_set=
 ac_cv_env_CPPFLAGS_value=
 ac_cv_env_CXXFLAGS_set=
@@ -178,15 +237,21 @@ ac_cv_env_host_alias_set=
 ac_cv_env_host_alias_value=
 ac_cv_env_target_alias_set=
 ac_cv_env_target_alias_value=
+ac_cv_lib_cyaml_cyaml_load_file=yes
 ac_cv_objext=o
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
 ac_cv_prog_AWK=gawk
+ac_cv_prog_ac_ct_CC=gcc
 ac_cv_prog_ac_ct_CXX=g++
+ac_cv_prog_cc_c89=
+ac_cv_prog_cc_g=yes
 ac_cv_prog_cxx_g=yes
 ac_cv_prog_make_make_set=yes
+am_cv_CC_dependencies_compiler_type=gcc3
 am_cv_CXX_dependencies_compiler_type=gcc3
 am_cv_make_support_nested_variables=yes
+am_cv_prog_cc_c_o=yes
 
 ## ----------------- ##
 ## Output variables. ##
@@ -205,6 +270,9 @@ AUTOCONF='${SHELL} /home/aleks/Projects/bettermake/missing autoconf'
 AUTOHEADER='${SHELL} /home/aleks/Projects/bettermake/missing autoheader'
 AUTOMAKE='${SHELL} /home/aleks/Projects/bettermake/missing automake-1.16'
 AWK='gawk'
+CC='gcc'
+CCDEPMODE='depmode=gcc3'
+CFLAGS='-g -O2'
 CPPFLAGS=''
 CXX='g++'
 CXXDEPMODE='depmode=gcc3'
@@ -220,9 +288,9 @@ INSTALL_DATA='${INSTALL} -m 644'
 INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'
 INSTALL_STRIP_PROGRAM='$(install_sh) -c -s'
-LDFLAGS=''
+LDFLAGS=' -L/usr/local/lib'
 LIBOBJS=''
-LIBS=''
+LIBS='-lcyaml '
 LTLIBOBJS=''
 MAKEINFO='${SHELL} /home/aleks/Projects/bettermake/missing makeinfo'
 MKDIR_P='/bin/mkdir -p'
@@ -239,9 +307,12 @@ SET_MAKE=''
 SHELL='/bin/sh'
 STRIP=''
 VERSION='1.0'
+ac_ct_CC='gcc'
 ac_ct_CXX='g++'
 am__EXEEXT_FALSE=''
 am__EXEEXT_TRUE='#'
+am__fastdepCC_FALSE='#'
+am__fastdepCC_TRUE=''
 am__fastdepCXX_FALSE='#'
 am__fastdepCXX_TRUE=''
 am__include='include'
@@ -292,73 +363,6 @@ target_alias=''
 #define PACKAGE_URL ""
 #define PACKAGE "bettermake"
 #define VERSION "1.0"
+#define HAVE_LIBCYAML 1
 
 configure: exit 0
-
-## ---------------------- ##
-## Running config.status. ##
-## ---------------------- ##
-
-This file was extended by bettermake config.status 1.0, which was
-generated by GNU Autoconf 2.69.  Invocation command line was
-
-  CONFIG_FILES    = 
-  CONFIG_HEADERS  = 
-  CONFIG_LINKS    = 
-  CONFIG_COMMANDS = 
-  $ ./config.status Makefile depfiles
-
-on aleks-solus
-
-config.status:835: creating Makefile
-config.status:1064: executing depfiles commands
-config.status:1141: cd .       && sed -e '/# am--include-marker/d' Makefile         | make -f - am--depfiles
-make[1]: Entering directory '/home/aleks/Projects/bettermake'
-make[1]: Leaving directory '/home/aleks/Projects/bettermake'
-config.status:1146: $? = 0
-
-## ---------------------- ##
-## Running config.status. ##
-## ---------------------- ##
-
-This file was extended by bettermake config.status 1.0, which was
-generated by GNU Autoconf 2.69.  Invocation command line was
-
-  CONFIG_FILES    = 
-  CONFIG_HEADERS  = 
-  CONFIG_LINKS    = 
-  CONFIG_COMMANDS = 
-  $ ./config.status Makefile depfiles
-
-on aleks-solus
-
-config.status:835: creating Makefile
-config.status:1064: executing depfiles commands
-config.status:1141: cd .       && sed -e '/# am--include-marker/d' Makefile         | make -f - am--depfiles
-make[1]: Entering directory '/home/aleks/Projects/bettermake'
-make[1]: Nothing to be done for 'am--depfiles'.
-make[1]: Leaving directory '/home/aleks/Projects/bettermake'
-config.status:1146: $? = 0
-
-## ---------------------- ##
-## Running config.status. ##
-## ---------------------- ##
-
-This file was extended by bettermake config.status 1.0, which was
-generated by GNU Autoconf 2.69.  Invocation command line was
-
-  CONFIG_FILES    = 
-  CONFIG_HEADERS  = 
-  CONFIG_LINKS    = 
-  CONFIG_COMMANDS = 
-  $ ./config.status Makefile depfiles
-
-on aleks-solus
-
-config.status:835: creating Makefile
-config.status:1064: executing depfiles commands
-config.status:1141: cd .       && sed -e '/# am--include-marker/d' Makefile         | make -f - am--depfiles
-make[1]: Entering directory '/home/aleks/Projects/bettermake'
-make[1]: Nothing to be done for 'am--depfiles'.
-make[1]: Leaving directory '/home/aleks/Projects/bettermake'
-config.status:1146: $? = 0

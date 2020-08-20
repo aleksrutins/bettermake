@@ -1,8 +1,9 @@
+AUTOMAKE_OPTIONS= foreign subdir-objects
 bin_PROGRAMS= mk-command mk-header mk-detail bettermake
-mk_command_SOURCES= command.cpp
-mk_header_SOURCES= header.cpp
-mk_detail_SOURCES= detail.cpp
-bettermake_SOURCES= bettermake.cpp
+mk_command_SOURCES= src/command.cpp
+mk_header_SOURCES= src/header.cpp
+mk_detail_SOURCES= src/detail.cpp
+bettermake_SOURCES= src/bettermake.cpp src/gen-build.c src/targets.c src/command-fn.c
 OPTDIR = /opt/bettermake
 
 check: all

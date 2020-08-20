@@ -1,4 +1,4 @@
-bettermake.o: bettermake.cpp /usr/include/stdc-predef.h \
+src/bettermake.o: src/bettermake.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/9/iostream \
  /usr/include/c++/9/x86_64-solus-linux/bits/c++config.h \
  /usr/include/c++/9/x86_64-solus-linux/bits/os_defines.h \
@@ -116,7 +116,8 @@ bettermake.o: bettermake.cpp /usr/include/stdc-predef.h \
  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
  /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
  /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
- gen-build.h /usr/include/c++/9/fstream /usr/include/c++/9/bits/codecvt.h \
+ src/gen-build.h /usr/include/c++/9/fstream \
+ /usr/include/c++/9/bits/codecvt.h \
  /usr/include/c++/9/x86_64-solus-linux/bits/basic_file.h \
  /usr/include/c++/9/x86_64-solus-linux/bits/c++io.h \
  /usr/include/c++/9/bits/fstream.tcc
@@ -479,7 +480,7 @@ bettermake.o: bettermake.cpp /usr/include/stdc-predef.h \
 
 /usr/include/bits/unistd_ext.h:
 
-gen-build.h:
+src/gen-build.h:
 
 /usr/include/c++/9/fstream:
 

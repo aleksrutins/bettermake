@@ -1,0 +1,38 @@
+# Default task, run by `bettermake build`. Override it by passing names of other tasks as command-line arguments.
+# eg. $ bettermake build world configure ...
+default: build
+# List of tasks
+tasks:
+    # Name of the task
+  - name: build
+    # Tasks to run first, run in order
+    depends: [configure]
+    # Description, shown in header
+    description: Compile
+    # List of shell commands to run. Run with the C standard library system() function.
+    commands:
+      - make
+    # Another task. You can have multiple commands per task.
+  - name: configure
+    depends: []
+    description: Autoconf
+    commands:
+      - autoconf
+      - ./configure
+    # Here's a task that isn't run by the default task chain. Run it with `bettermake build install`.
+  - name: install
+    depends: [build]
+    description: Install (needs sudo)
+    commands:
+      - make install
+    # Another task. Et cetera.
+  - name: hello
+    depends: []
+    description: Print hello
+    commands:
+      - echo hello
+  - name: world
+    depends: [hello]
+    description: Print world
+    commands:
+      - echo world
