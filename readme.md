@@ -1,6 +1,9 @@
 # Bettermake
 ## A snappy build system using YAML and written in C
 ### Get started
+#### Dependencies
+- libcyaml (<https://github.com/tlsa/libcyaml>)
+- By extension, libyaml
 #### Installation
 `git clone` the repository and run `./configure && make && sudo make install`, or, on Linux, you can run 'sudo ./bettermake build install' to take a look at the built-in build system.
 
