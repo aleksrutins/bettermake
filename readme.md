@@ -5,14 +5,50 @@
 `git clone` the repository and run `./configure && make && sudo make install`, or, on Linux, you can run 'sudo ./bettermake build install' to take a look at the built-in build system.
 
 #### Create a build file
-##### Using make
+##### Using make (deprecated, no longer updated)
 Just use make as usual, with `include /opt/bettermake/path.mk` at the top, and using the commands described below.
-##### Using the built-in build system.
+##### Using the built-in build system (recommended)
 Run `bettermake init` to create an example `buildconf.yml` file for you. \
 See the `buildconf.yml` file in this repository for a fully-documented example.
-```
+
 ### Building
-Simply run `make` as usual.
+Run `bettermake build` to run the default task.
+See the `bettermake` subcommand reference below for more details.
+
+### `bettermake` subcommand reference
+#### `bettermake build [target...]`
+With no arguments, builds the default target. \
+With one or more arguments, builds the targets specified by the arguments, in order.
+
+#### `bettermake init`
+Initializes `buildconf.yml` with the following content:
+```yaml
+default: helloworld
+env: ""
+tasks:
+  - name: helloworld
+    depends: []
+    description: Print hello world
+    commands:
+      - echo hello
+```
+
+#### `bettermake list`
+Lists the targets in `buildconf.yml`. \
+Sample output (from this project):
+```
+Default task: build
+build: Compile
+configure: Autoconf
+install: Install (needs sudo)
+hello: Print hello
+world: Print world
+fail: Fail it
+testenv: Test Environment
+```
+
+#### `bettermake install`
+Installs the latest Linux makefile utilities to /opt/bettermake.
 
 ### Command reference (for Makefiles)
 #### `mk-header`
