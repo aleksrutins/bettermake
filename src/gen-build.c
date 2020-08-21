@@ -47,7 +47,7 @@ int listTargets() {
 		printf("\e[1;31mError:\e[0;31m %s\e[0m\n", cyaml_strerror(err));
 		return 1;
 	}
-
+	printf("\e[1;31mDefault task: \e[0;33m%s\e[0m\n", config->defaultStep);
 	for(i = 0; i < config->steps_count; i++) {
 		printf("\e[1;32m%s: \e[0;33m%s\e[0m\n", config->steps[i]->name, config->steps[i]->description);
 	}
