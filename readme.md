@@ -50,6 +50,13 @@ testenv: Test Environment
 #### `bettermake install`
 Installs the latest Linux makefile utilities to /opt/bettermake.
 
+### Why I chose to switch over to a custom build system
+The main reason is, this one is faster than Make, single-threaded. \
+Also, I was noticing that using the Makefile utilities, with all their `mk-` prefixes, was making my output nice, but my Makefile downright ugly. I prefer YAML for this sort of thing. \
+Finally, I was hoping to do some things with Bettermake that I couldn't do when all the parts were separated into separate, non-communicating executables (for example, putting out 'completed successfully' at the end of a target, instead of after each command). \
+Also, who doesn't want another YAML-based build system? ;)
+
+
 ### Command reference (for Makefiles)
 #### `mk-header`
 Print out a recipe header. \
