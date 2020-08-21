@@ -30,9 +30,18 @@ tasks:
     depends: []
     description: Print hello
     commands:
+      # Print out a detail message with the special /detail command
+      - /detail Printing hello
       - echo hello
   - name: world
     depends: [hello]
     description: Print world
     commands:
       - echo world
+  # A task that will fail
+  - name: fail
+    depends: []
+    description: Fail it
+    commands:
+      - yadda
+      - yadda yadda
