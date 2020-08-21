@@ -9,7 +9,8 @@ int genBuild(int argc, char const *argv[]) {
 	cyaml_err_t err;
 	register int i;
 	int res;
-
+	char tmp[80];
+	puts("\e[1;32mLoading \e[0;31mbuildconf.yml\e[1;32m...\e[0m");
 	err = cyaml_load_file("buildconf.yml", &cyconfig,
 			&config_schema, (void **) &config, NULL);
 
@@ -18,8 +19,14 @@ int genBuild(int argc, char const *argv[]) {
 		return 1;
 	}
 	if(argc < 2) {
+		printf("\e[1;32mRunning default task: \e[0;31m%s\e[0m\n", config->defaultStep);
 		return runDefault(config);
 	} else {
+		printf("\e[1;32mRunning tasks: \e[0;31m");
+		for(i = 1; i < argc; i++) {
+			printf("%s ", argv[i]);
+		}
+		printf("\e[0m\n");
 		for(i = 1; i < argc; i++) {
 			if(hasStep(config, argv[i])) {
 				res = runStep(config, argv[i]);
