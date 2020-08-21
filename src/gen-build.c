@@ -34,3 +34,22 @@ int genBuild(int argc, char const *argv[]) {
 		}
 	}
 };
+
+int listTargets() {
+	struct build_config *config;
+	cyaml_err_t err;
+	register int i;
+
+	err = cyaml_load_file("buildconf.yml", &cyconfig,
+			&config_schema, (void **) &config, NULL);
+
+	if(err != CYAML_OK) {
+		printf("\e[1;31mError:\e[0;31m %s\e[0m\n", cyaml_strerror(err));
+		return 1;
+	}
+
+	for(i = 0; i < config->steps_count; i++) {
+		printf("\e[1;32m%s: \e[0;33m%s\e[0m\n", config->steps[i]->name, config->steps[i]->description);
+	}
+	return 0;
+}

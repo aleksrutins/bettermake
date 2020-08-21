@@ -38,6 +38,8 @@ int main(int argc, char const *argv[])
 		// cout << "\e[1;33mUnzipping...\e[0m" << endl;
 		// command("gunzip bettermake.gz");
 		// cout << "\e[1;32mDone!\e[0m" << endl;
+	} else if(cmd == "list") {
+		return listTargets();
 	}
 	return 0;
 }
