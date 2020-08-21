@@ -21,7 +21,7 @@ int runStep(struct build_config *config, char *name) {
 				if(startsWith(cmd, "/detail ")) {
 					printf("\e[0;33m-> %s <-\e[0m\n", (cmd + 8));
 				} else {
-					res = command(cmd);
+					res = command_env(cmd, config->env);
 					if(res != 0) {
 						printf("\e[1;31mFailed at command %i\e[0m\n", j + 1);
 						return res;

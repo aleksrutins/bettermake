@@ -25,7 +25,8 @@ int main(int argc, char const *argv[])
 	} else if(cmd == "init") {
 		cout << "\e[1;33mInitializing buildconf.yml...\e[0m" << endl;
 		ofstream buildcfg("buildconf.yml");
-		buildcfg << "default: helloworld"
+		buildcfg << "default: helloworld" << endl
+				 << "env: \"\"" << endl
 				 << "tasks:" << endl
 				 << "  - name: helloworld" << endl
 				 << "    depends: []" << endl

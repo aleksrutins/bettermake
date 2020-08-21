@@ -11,6 +11,7 @@ struct step {
 
 struct build_config {
 	char *defaultStep;
+	char *env;
 	struct step **steps;
 	unsigned steps_count;
 };

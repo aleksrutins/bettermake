@@ -1,6 +1,9 @@
 # Default task, run by `bettermake build`. Override it by passing names of other tasks as command-line arguments.
 # eg. $ bettermake build world configure ...
 default: build
+# Environment, as one big long string
+env: |
+  TEST=hi
 # List of tasks
 tasks:
     # Name of the task
@@ -45,3 +48,8 @@ tasks:
     commands:
       - yadda
       - yadda yadda
+  - name: testenv
+    depends: []
+    description: Test Environment
+    commands:
+      - echo $TEST

@@ -37,6 +37,9 @@ static const cyaml_schema_field_t config_fields_schema[] = {
 		"default", CYAML_FLAG_POINTER,
 		struct build_config, defaultStep, 0, CYAML_UNLIMITED
 		),
+	CYAML_FIELD_STRING_PTR(
+		"env", CYAML_FLAG_POINTER,
+		struct build_config, env, 0, CYAML_UNLIMITED),
 	CYAML_FIELD_END
 };
 static const cyaml_schema_value_t config_schema = {
