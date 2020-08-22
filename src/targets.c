@@ -36,10 +36,7 @@ int runStep(struct build_config *config, char *name) {
 					printf("\e[1;34m%s [detail]: \e[0;31m%s\e[0m\n", name, (cmd + 8));
 				} else {
 					res = command_env(cmd, config->env);
-					if(res != 0) {
-						printf("\e[1;31mFailed at command %i\e[0m\n", j + 1);
-						return res;
-					};
+					if(res != 0) return res;
 				}
 			}
 			puts("\e[1;31m------------\e[0m");
