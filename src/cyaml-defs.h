@@ -14,13 +14,16 @@ static const cyaml_schema_field_t step_fields_schema[] = {
 			"description", CYAML_FLAG_POINTER,
 			struct step, description, 0, CYAML_UNLIMITED),
 	CYAML_FIELD_SEQUENCE(
-			"commands", CYAML_FLAG_POINTER,
+			"commands", CYAML_FLAG_POINTER | CYAML_FLAG_OPTIONAL,
 			struct step, commands,
 			&string_ptr_schema, 0, CYAML_UNLIMITED),
 	CYAML_FIELD_SEQUENCE(
-			"depends", CYAML_FLAG_POINTER,
+			"depends", CYAML_FLAG_POINTER | CYAML_FLAG_OPTIONAL,
 			struct step, dependencies,
 			&string_ptr_schema, 0, CYAML_UNLIMITED),
+	CYAML_FIELD_STRING_PTR(
+			"run-if", CYAML_FLAG_POINTER_NULL | CYAML_FLAG_OPTIONAL,
+			struct step, runIf, 0, CYAML_UNLIMITED),
 	CYAML_FIELD_END
 };
 static const cyaml_schema_value_t step_schema = {

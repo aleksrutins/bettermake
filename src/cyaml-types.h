@@ -8,6 +8,7 @@ struct step {
 	unsigned commands_count;
 	unsigned dependencies_count;
 	int hasRun;
+	char *runIf;
 };
 
 struct build_config {

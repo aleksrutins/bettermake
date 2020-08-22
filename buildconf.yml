@@ -18,7 +18,6 @@ tasks:
       - make
     # Another task. You can have multiple commands per task.
   - name: configure
-    depends: []
     description: Autoconf
     commands:
       - autoconf
@@ -29,9 +28,8 @@ tasks:
     description: Install (needs sudo)
     commands:
       - make install
-    # Another task. Et cetera.
+    # Another task. Notice that `commands` and `depends` are optional.
   - name: hello
-    depends: []
     description: Print hello
     commands:
       # Print out a detail message with the special /detail command
@@ -44,26 +42,24 @@ tasks:
       - echo world
   # A task that will fail
   - name: fail
-    depends: []
     description: Fail it
     commands:
       - yadda
       - yadda yadda
   - name: testenv
-    depends: []
     description: Test Environment
     commands:
       - echo $TEST
 
   - name: doubleprereq
-    depends: []
     description: Double Prerequisite
-    commands: []
   - name: req1
     depends: [doubleprereq]
     description: Require 1
-    commands: []
   - name: req2
     depends: [req1, doubleprereq]
     description: Require 2
-    commands: []
+  - name: del-bin
+    run-if: "test -e bin"
+    description: Delete bin
+    commands: [rm -rf bin]
