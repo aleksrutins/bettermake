@@ -54,3 +54,16 @@ tasks:
     description: Test Environment
     commands:
       - echo $TEST
+
+  - name: doubleprereq
+    depends: []
+    description: Double Prerequisite
+    commands: []
+  - name: req1
+    depends: [doubleprereq]
+    description: Require 1
+    commands: []
+  - name: req2
+    depends: [req1, doubleprereq]
+    description: Require 2
+    commands: []

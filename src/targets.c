@@ -11,6 +11,10 @@ int runStep(struct build_config *config, char *name) {
 	char *cmd;
 	for(i = 0; i < config->steps_count; i++) {
 		if(!strcmp(config->steps[i]->name, name)) {
+			if(config->steps[i]->hasRun) {
+				printf("\e[1;32mTask \e[0;31m%s\e[1;32m has already been run.\e[0m\n", name);
+				return 0;
+			}
 			if(config->steps[i]->dependencies_count > 0) {
 				printf("\e[1;32mLoading dependencies for \e[0;31m%s\e[1;32m: \e[0;31m", name);
 				for(j = 0; j < config->steps[i]->dependencies_count; j++) {
@@ -40,9 +44,12 @@ int runStep(struct build_config *config, char *name) {
 			}
 			puts("\e[1;31m------------\e[0m");
 			printf("\e[1;32mTask \e[0;31m%s\e[1;32m completed successfully\e[0m\n", name);
+			config->steps[i]->hasRun = 1;
+			return 0;
 		}
 	}
-	return 0;
+	printf("\e[1;31mTask \e[0;31m%s\e[1;31m does not exist.\e[0m\n", name);
+	return 1;
 }
 int runDefault(struct build_config *config) {
 	return runStep(config, config->defaultStep);

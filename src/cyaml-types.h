@@ -7,6 +7,7 @@ struct step {
 	char **dependencies;
 	unsigned commands_count;
 	unsigned dependencies_count;
+	int hasRun;
 };
 
 struct build_config {
