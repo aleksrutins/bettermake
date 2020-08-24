@@ -8,3 +8,5 @@ scripts:
     - make
   install:
     - make install
+bin:
+  bettermake: bin/bettermake
