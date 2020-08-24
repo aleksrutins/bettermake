@@ -1,5 +1,4 @@
 name: munchkinhalfling/bettermake
-version: 1.0.0
 sourceType: git
 source: git://github.com/munchkinhalfling/bettermake
 scripts:
