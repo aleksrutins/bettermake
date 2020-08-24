@@ -4,7 +4,15 @@
 #### Dependencies
 - libcyaml (<https://github.com/tlsa/libcyaml>)
 - By extension, libyaml
+
 #### Installation
+#### Via `hubcap` (<https://github.com/munchkinhalfling/hubcap>)
+Run:
+```sh
+$ sudo hubcap install munchkinhalfling/bettermake
+```
+Caveat (or feature, depending on your view): the `mk-` commands will be available in /usr/bin.
+#### From source
 `git clone` the repository and run `./configure && make && sudo make install`, or, on Linux, you can run 'sudo ./bettermake build install' to take a look at the built-in build system.
 
 #### Create a build file
