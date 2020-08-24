@@ -1,12 +1,19 @@
+# Matches the repository name
 name: munchkinhalfling/bettermake
+# Type of source: 'git', 'tgz', or 'zip'. 'zip' is not yet implemented.
 sourceType: git
+# Source URL.
 source: git://github.com/munchkinhalfling/bettermake
+# Scripts, in the order that they should be run. $(...) is variable syntax.
+# Currently available variables are:
+# - PREFIX: Install prefix (/usr/local/bettermake/install/<user>/<repo>)
 scripts:
   build:
     - ./configure --prefix=$(PREFIX)
     - make
   install:
     - make install OPTDIR=$(PREFIX)/utils
+# Binaries, <name>: <relative path from $(PREFIX)>, symlinked to /usr/bin.
 bin:
   bettermake: bin/bettermake
   mk-command: utils/mk-command
