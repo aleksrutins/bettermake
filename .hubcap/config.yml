@@ -1,0 +1,10 @@
+name: munchkinhalfling/bettermake
+version: 1.0.0
+sourceType: git
+source: git://github.com/munchkinhalfling/bettermake
+scripts:
+  build:
+    - ./configure --prefix=$(PREFIX)
+    - make
+  install:
+    - make install
