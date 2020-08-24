@@ -7,6 +7,9 @@ scripts:
     - ./configure --prefix=$(PREFIX)
     - make
   install:
-    - make install
+    - make install OPTDIR=$(PREFIX)/utils
 bin:
   bettermake: bin/bettermake
+  mk-command: utils/mk-command
+  mk-header: utils/mk-header
+  mk-detail: utils/mk-detail
