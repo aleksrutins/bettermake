@@ -1,0 +1,51 @@
+# Name to be shown in confirmation prompt
+name = "bettermake";
+# Doesn't do anything yet
+author = "munchkinhalfling";
+
+# Shown if something goes wrong
+notify_dev_depends = ("Autoconf", "Automake", "Make");
+notify_depends = ("libcyaml");
+# `app`-based packages to be installed first.
+depends = ();
+dev_depends = ();
+
+# A list of scripts for build and install.
+scripts:
+(
+    {
+        # Name of the script
+        name = "configure";
+        # Commands
+        commands = ("autoconf", "./configure --prefix=$prefix");
+    },
+    {
+        name = "build";
+        commands = ("make");
+    }
+);
+
+# $prefix is the install root
+install = ("make install OPTDIR=$prefix/utils");
+
+# Binaries (and other files) to symlink
+files = (
+    {
+        # Path to symlink to (with / being ~/.local/)
+        install_path = "/bin/bettermake";
+        # Path to the file in the install root (with / being the install root)
+        pkg_path = "/bin/bettermake";
+    },
+    {
+        install_path = "/bin/mk-command";
+        pkg_path = "/utils/mk-command";
+    },
+    {
+        install_path = "/bin/mk-header";
+        pkg_path = "/utils/mk-header";
+    },
+    {
+        install_path = "/bin/mk-detail";
+        pkg_path = "/utils/mk-detail";
+    }
+);
