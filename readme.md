@@ -12,6 +12,12 @@ Run:
 $ sudo hubcap install munchkinhalfling/bettermake
 ```
 Caveat (or feature, depending on your view): the `mk-` commands will be available in /usr/bin.
+#### Via `app` (<https://github.com/munchkinhalfling/app>) (Linux only)
+Run:
+```sh
+$ app install munchkinhalfling/bettermake
+```
+This has the same caveat as installation via `hubcap`. The advantage of this is that it installs only for your account.
 #### From source
 `git clone` the repository and run `./configure && make && sudo make install`, or, on Linux, you can run 'sudo ./bettermake build install' to take a look at the built-in build system.
 
