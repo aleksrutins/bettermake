@@ -9,13 +9,11 @@ source: git://github.com/munchkinhalfling/bettermake
 # - PREFIX: Install prefix (/usr/local/bettermake/install/<user>/<repo>)
 scripts:
   build:
-    - ./configure --prefix=$(PREFIX)
-    - make
+    - rm -rf builddir
+    - meson builddir --prefix=$(PREFIX)
+    - ninja -C builddir
   install:
-    - make install OPTDIR=$(PREFIX)/utils
+    - ninja -C builddir install
 # Binaries, <name>: <relative path from $(PREFIX)>, symlinked to /usr/bin.
 bin:
   bettermake: bin/bettermake
-  mk-command: utils/mk-command
-  mk-header: utils/mk-header
-  mk-detail: utils/mk-detail

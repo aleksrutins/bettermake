@@ -15,19 +15,19 @@ tasks:
     description: Compile
     # List of shell commands to run. Run with the C standard library system() function.
     commands:
-      - make
+      - ninja -C builddir
     # Another task. You can have multiple commands per task.
   - name: configure
-    description: Autoconf
+    description: Meson
     commands:
-      - autoconf
-      - ./configure
+      - meson builddir
+      - echo Done Configuring
     # Here's a task that isn't run by the default task chain. Run it with `bettermake build install`.
   - name: install
     depends: [build]
     description: Install (needs sudo)
     commands:
-      - make install
+      - sudo ninja -C builddir install
     # Another task. Notice that `commands` and `depends` are optional.
   - name: hello
     description: Print hello
@@ -59,7 +59,7 @@ tasks:
   - name: req2
     depends: [req1, doubleprereq]
     description: Require 2
-  - name: del-bin
-    run-if: "test -e bin"
+  - name: clean
+    run-if: "test -e builddir"
     description: Delete bin
-    commands: [rm -rf bin]
+    commands: [rm -rf builddir]
