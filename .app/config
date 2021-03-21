@@ -1,7 +1,7 @@
 # Name to be shown in confirmation prompt
 name = "bettermake";
 # Doesn't do anything yet
-author = "munchkinhalfling";
+author = "Aleks Rutins";
 
 # Shown if something goes wrong
 notify_dev_depends = ("Meson", "Ninja");
